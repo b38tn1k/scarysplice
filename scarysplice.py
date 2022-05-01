@@ -2,9 +2,11 @@
 import curses
 import pickle
 import os
+import sys
 
 project_list = []
 cursor = 0
+TESTING = True
 header = '''
  _____                        _____       _ _
 /  ___|                      /  ___|     | (_)
@@ -18,35 +20,49 @@ header = '''
 
 
 class AbletonProject():
-    def __init__(self, name, path):
-        self.name = name
+    def __init__(self, path):
+        self.name = 'test'
         self.path = path
+
+def quit(scr):
+    curses.nocbreak()
+    scr.keypad(False)
+    curses.echo()
+    curses.endwin()
+    exit()
+
+def save():
+    with open('data.dat', 'wb') as f:
+        pickle.dump(project_list, f)
+        f.close()
 
 
 def read_keys(scr):
     global project_list
     global cursor
     k = scr.getch()
-    if k == ord('q'):
-        scr.clear()
-        scr.refresh()
+    if k == ord('q') or k == ord('Q'):
         quit(scr)
+    elif k == ord('d') or k == ord('D'):
+        if len(project_list) > 0:
+            project_list.pop(cursor)
+            save()
+    elif k == ord('f') and TESTING == True:
+        makeDummyAbletonProjects()
     elif k == curses.KEY_UP:
         cursor = max(cursor - 1, 0)
     elif k == curses.KEY_DOWN:
-        cursor = min(cursor + 1, len(project_list)-1)
+        cursor = min(cursor + 1, max(0, len(project_list)-1))
 
 
 def makeDummyAbletonProjects():
     project_list = []
-    project_list.append(AbletonProject('Goodbye Horses', '/User/whatever'))
-    project_list.append(AbletonProject('High Low', '/User/whatever'))
-    with open('data.dat', 'wb') as f:
-        pickle.dump(project_list, f)
-        f.close()
+    project_list.append(AbletonProject('/User/whatever'))
+    project_list.append(AbletonProject('/User/whatever/als'))
+    save()
 
 
-def main():
+def main(args):
     global project_list
     if os.path.exists(os.path.join(os.getcwd(), 'data.dat')):
         with open('data.dat', 'rb') as f:
@@ -54,6 +70,7 @@ def main():
             f.close()
     else:
         project_list = []
+    # project_list.append(args)
     scr = curses.initscr()
     curses.start_color()
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
@@ -82,5 +99,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # makeDummyAbletonProjects()
-    main()
+    main(sys.argv)
