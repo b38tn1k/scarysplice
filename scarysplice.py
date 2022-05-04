@@ -94,18 +94,17 @@ def save():
 
 def refresh():
     global project_list
-    dates = []
+    my_dates = []
     for tp in project_list:
         tp.get_als_info()
         tp.check_and_git_init()
-        dates.append(tp.last_modified)
-    dates.sort()
+        my_dates.append(tp.last_modified)
+    my_dates.sort(reverse=True)
     new_list = []
-    while len(dates) != 0:
+    for i in my_dates:
         for tp in project_list:
-            if tp.last_modified == dates[0]:
+            if tp.last_modified == i:
                 new_list.append(tp)
-                dates.pop(0)
     project_list = new_list
     save()
 
