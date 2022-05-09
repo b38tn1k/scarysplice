@@ -1,11 +1,28 @@
 # Scary Splice
 
-Cause splice can't handle 22 drum tracks.
+For Royal Chant. Because splice can't handle 22 drum tracks.
 
-## Setup
+## Automator Quick Actions
 
-You need [Homebrew](https://brew.sh/)
+Consists of three automator quick actions:
 
-``
-brew install gh
-``
+- make new git project
+- pack for git
+- unpack for git
+
+You need to add them to Apple Automator yourself. They are not signed, very basic and have no error checking. be careful!
+
+## New Project Setup
+After saving a new Ableton session, right click on the Ableton Project Folder. Select the quick action 'make new git project'.
+
+Select the .als file you wish to track, right click and 'pack for git'. You should see a .xml file appear.
+
+In Github Desktop, select 'Add' and 'Add Existing Repository'. Navigate to the Ableton Project Folder, Open and then hit 'Add Repository'. If Github Desktop asks you you would like to create a repository here instead, something is wrong.
+
+Type something in the 'Summary' fiueld in Github Desktop, then click 'Commit to master'. Click 'Publish Repository'.
+
+## Sharing Updated Project
+
+When you have finished a project session, collect all and save and close Live. Navigate to the project directory and right click the .als file. Select the quick action 'pack for git'.
+
+In Github desktop, make sure all the required files are added, type in a summary and hit 'commit to master'. 
