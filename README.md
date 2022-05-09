@@ -21,8 +21,16 @@ In Github Desktop, select 'Add' and 'Add Existing Repository'. Navigate to the A
 
 Type something in the 'Summary' fiueld in Github Desktop, then click 'Commit to master'. Click 'Publish Repository'.
 
+You can add collaborators on the Github website in the repository settings. 
+
 ## Sharing Updated Project
 
 When you have finished a project session, collect all and save and close Live. Navigate to the project directory and right click the .als file. Select the quick action 'pack for git'.
 
-In Github desktop, make sure all the required files are added, type in a summary and hit 'commit to master'. 
+In Github Desktop, make sure all the required files are added, type in a summary and hit 'commit to master'. Then hit Push origin to upload the changes.
+
+## Getting Updated Project
+
+In Github Desktop, select the repository you wish to work on. Click 'Fetch origin'. If anything has changed, you can then click 'Pull origin' to download the updated project.
+
+In Finder, navigate to the project directory, right click the .xml file and choose the Quick Action 'unpack from git'. This will overwrite the .als file that exists with the up to date project file. Open that .als and make some beautiful music!
