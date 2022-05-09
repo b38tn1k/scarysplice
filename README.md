@@ -21,7 +21,7 @@ In Github Desktop, select 'Add' and 'Add Existing Repository'. Navigate to the A
 
 Type something in the 'Summary' fiueld in Github Desktop, then click 'Commit to master'. Click 'Publish Repository'.
 
-You can add collaborators on the Github website in the repository settings. 
+You can add collaborators on the Github website in the repository settings.
 
 ## Sharing Updated Project
 
